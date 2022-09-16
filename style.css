@@ -6,19 +6,22 @@ body {
 }
 
 .board {
-    width: 400px;
-    height: 400px;
+    width: 700px;
+    height: 700px;
     border: 2px solid black;
     display: flex;
     flex-direction: column;
     background-color: pink;
-    padding: 5px;
+    padding: 15px;
+    margin: 15px;
 }
 .board .btn {
+    flex-grow: 1;
     display: grid;
     grid-template-columns: repeat(4, 2fr);
     grid-template-rows: repeat(5, 2fr);
     padding: 5px;
+    margin: 5px;
 }
 .board button {
     font-size: 50px;
@@ -26,11 +29,14 @@ body {
     
 }
 input {
-    flex-grow: 1;
+    height: 100px;
+    /* flex-grow: 1; */
     font-size: 50px;
     text-align: end;
     background-color: aquamarine;
 }
 button {
-    border-radius: 10px;
+    border-radius: 30px;
+    margin: 5px;
+    background-color: coral;
 }
