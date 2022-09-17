@@ -46,25 +46,26 @@ const btnclear = document.getElementById('btnclear');
 const btnswitch = document.getElementById('btnswitch');
 const btnequal = document.getElementById("btnequal");
 
-
+let doTheCheck = 0;
 let storage='';
 let symbolOperator='';
 let lastStorage='';
- btn0.addEventListener('click', function () { input.value += `0`; storage=input.value;});
- btn1.addEventListener('click', function () { input.value += `1`; storage=input.value;});
- btn2.addEventListener('click', function () { input.value += `2`; storage=input.value;});
- btn3.addEventListener('click', function () { input.value += `3`; storage=input.value;});
- btn4.addEventListener('click', function () { input.value += `4`; storage=input.value;});
- btn5.addEventListener('click', function () { input.value += `5`; storage=input.value;});
- btn6.addEventListener('click', function () { input.value += `6`; storage=input.value;});
- btn7.addEventListener('click', function () { input.value += `7`; storage=input.value;});
- btn8.addEventListener('click', function () { input.value += `8`; storage=input.value;});
- btn9.addEventListener('click', function () { input.value += `9`; storage=input.value;});
- btnpct.addEventListener('click', function () { input.value += `.`; storage=input.value;});
+ btn0.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `0`; storage=input.value;});
+ btn1.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `1`; storage=input.value;});
+ btn2.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `2`; storage=input.value;});
+ btn3.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `3`; storage=input.value;});
+ btn4.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `4`; storage=input.value;});
+ btn5.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `5`; storage=input.value;});
+ btn6.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `6`; storage=input.value;});
+ btn7.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `7`; storage=input.value;});
+ btn8.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `8`; storage=input.value;});
+ btn9.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `9`; storage=input.value;});
+ btnpct.addEventListener('click', function () { if(doTheCheck != 0) {input.value = ''; doTheCheck = 0;} input.value += `.`; storage=input.value;});
  btnclear.addEventListener('click', function () { input.value = ``; storage=''; symbolOperator = ''; lastStorage='';});
  btnswitch.addEventListener('click', function () { input.value=input.value*-1 ; storage=input.value;});
 
 btnplus.addEventListener('click', function() {
+    if(symbolOperator !== '' && lastStorage !== '') {input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage)); }
     if(lastStorage !== '') {
         input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
    lastStorage = input.value;
@@ -72,16 +73,20 @@ btnplus.addEventListener('click', function() {
     if(symbolOperator === '')
        {    if(lastStorage === '')  lastStorage = storage;
         
-          symbolOperator = '+';
-          input.value = '';
+         
+          doTheCheck = 1;
           storage = '';
+          symbolOperator = '+';
     } else if(symbolOperator !== '') {
-        symbolOperator = '+';
-        input.value = '';
+        
+        doTheCheck = 1;
         storage = '';
+        symbolOperator = '+';
+        
     }
 });
 btnminus.addEventListener('click', function() {
+    if(symbolOperator !== '' && lastStorage !== '') {input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage)); }
     if(lastStorage !== '') {
         input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
    lastStorage = input.value;
@@ -89,17 +94,21 @@ btnminus.addEventListener('click', function() {
     if(symbolOperator === '')
        {    if(lastStorage === '')  lastStorage = storage;
         
-          symbolOperator = '-';
-          input.value = '';
+          
+          doTheCheck = 1;
           storage = '';
+          symbolOperator = '-';
     } else if(symbolOperator !== '') {
-        symbolOperator = '-';
-        input.value = '';
+        
+        doTheCheck = 1;
         storage = '';
+        symbolOperator = '-';
+        
     }
 });
 
 btnmultiply.addEventListener('click', function() {
+    if(symbolOperator !== '' && lastStorage !== '') {input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage)); }
     if(lastStorage !== '') {
         input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
    lastStorage = input.value;
@@ -108,16 +117,17 @@ btnmultiply.addEventListener('click', function() {
        {    if(lastStorage === '')  lastStorage = storage;
         
           symbolOperator = '*';
-          input.value = '';
+          doTheCheck = 1;
           storage = '';
     } else if(symbolOperator !== '') {
         symbolOperator = '*';
-        input.value = '';
+        doTheCheck = 1;
         storage = '';
     }
 });
 
 btndivide.addEventListener('click', function() {
+    if(symbolOperator !== '' && lastStorage !== '') {input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage)); }
     if(lastStorage !== '') {
         input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
    lastStorage = input.value;
@@ -125,16 +135,17 @@ btndivide.addEventListener('click', function() {
     if(symbolOperator === '')
        {  if(lastStorage === '')  lastStorage = storage;
           symbolOperator = '/';
-          input.value = '';
+          doTheCheck = 1;
           storage = '';
     } else if(symbolOperator !== '') {
         symbolOperator = '/';
-        input.value = '';
+        doTheCheck = 1;
         storage = '';
     }
 });
 
 btnpower.addEventListener('click', function() {
+    if(symbolOperator !== '' && lastStorage !== '') {input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage)); }
     if(lastStorage !== '') {
         input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
    lastStorage = input.value;
@@ -143,11 +154,11 @@ btnpower.addEventListener('click', function() {
        {    if(lastStorage === '')  lastStorage = storage;
         
           symbolOperator = '^';
-          input.value = '';
+          doTheCheck = 1;
           storage = '';
     } else if(symbolOperator !== '') {
         symbolOperator = '^';
-        input.value = '';
+        doTheCheck = 1;
         storage = '';
     }
 });
