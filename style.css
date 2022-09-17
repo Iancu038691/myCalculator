@@ -14,6 +14,7 @@ body {
     background-color: pink;
     padding: 15px;
     margin: 15px;
+    border-radius: 12px;
 }
 .board .btn {
     flex-grow: 1;
@@ -34,6 +35,7 @@ input {
     font-size: 50px;
     text-align: end;
     background-color: aquamarine;
+    border-radius: 12px;
 }
 button {
     border-radius: 30px;
