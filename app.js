@@ -44,8 +44,12 @@ const btndivide = document.getElementById('btndivide');
 const btnpower = document.getElementById('btnpower');
 const btnclear = document.getElementById('btnclear');
 const btnswitch = document.getElementById('btnswitch');
+const btnequal = document.getElementById("btnequal");
 
-let storage;
+
+let storage='';
+let symbolOperator='';
+let lastStorage='';
  btn0.addEventListener('click', function () { input.value += `0`; storage=input.value;});
  btn1.addEventListener('click', function () { input.value += `1`; storage=input.value;});
  btn2.addEventListener('click', function () { input.value += `2`; storage=input.value;});
@@ -57,10 +61,108 @@ let storage;
  btn8.addEventListener('click', function () { input.value += `8`; storage=input.value;});
  btn9.addEventListener('click', function () { input.value += `9`; storage=input.value;});
  btnpct.addEventListener('click', function () { input.value += `.`; storage=input.value;});
- btnclear.addEventListener('click', function () { input.value = ``; storage='';});
+ btnclear.addEventListener('click', function () { input.value = ``; storage=''; symbolOperator = ''; lastStorage='';});
  btnswitch.addEventListener('click', function () { input.value=input.value*-1 ; storage=input.value;});
 
+btnplus.addEventListener('click', function() {
+    if(lastStorage !== '') {
+        input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
+   lastStorage = input.value;
+    }
+    if(symbolOperator === '')
+       {    if(lastStorage === '')  lastStorage = storage;
+        
+          symbolOperator = '+';
+          input.value = '';
+          storage = '';
+    } else if(symbolOperator !== '') {
+        symbolOperator = '+';
+        input.value = '';
+        storage = '';
+    }
+});
+btnminus.addEventListener('click', function() {
+    if(lastStorage !== '') {
+        input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
+   lastStorage = input.value;
+    }
+    if(symbolOperator === '')
+       {    if(lastStorage === '')  lastStorage = storage;
+        
+          symbolOperator = '-';
+          input.value = '';
+          storage = '';
+    } else if(symbolOperator !== '') {
+        symbolOperator = '-';
+        input.value = '';
+        storage = '';
+    }
+});
 
+btnmultiply.addEventListener('click', function() {
+    if(lastStorage !== '') {
+        input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
+   lastStorage = input.value;
+    }
+    if(symbolOperator === '')
+       {    if(lastStorage === '')  lastStorage = storage;
+        
+          symbolOperator = '*';
+          input.value = '';
+          storage = '';
+    } else if(symbolOperator !== '') {
+        symbolOperator = '*';
+        input.value = '';
+        storage = '';
+    }
+});
+
+btndivide.addEventListener('click', function() {
+    if(lastStorage !== '') {
+        input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
+   lastStorage = input.value;
+    }
+    if(symbolOperator === '')
+       {  if(lastStorage === '')  lastStorage = storage;
+          symbolOperator = '/';
+          input.value = '';
+          storage = '';
+    } else if(symbolOperator !== '') {
+        symbolOperator = '/';
+        input.value = '';
+        storage = '';
+    }
+});
+
+btnpower.addEventListener('click', function() {
+    if(lastStorage !== '') {
+        input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
+   lastStorage = input.value;
+    }
+    if(symbolOperator === '')
+       {    if(lastStorage === '')  lastStorage = storage;
+        
+          symbolOperator = '^';
+          input.value = '';
+          storage = '';
+    } else if(symbolOperator !== '') {
+        symbolOperator = '^';
+        input.value = '';
+        storage = '';
+    }
+});
+
+
+
+
+
+
+
+btnequal.addEventListener('click', function() {
+    input.value = operate(parseInt(lastStorage), symbolOperator, parseInt(storage));
+   lastStorage = input.value;
+    
+});
 
 
 

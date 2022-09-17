@@ -1,8 +1,10 @@
 body {
-    background-color: whitesmoke;
+    background-color: black;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    
+    justify-content: start;
+    align-items: flex-start;
+    margin-left: 300px;
 }
 
 .board {
@@ -15,6 +17,7 @@ body {
     padding: 15px;
     margin: 15px;
     border-radius: 12px;
+    
 }
 .board .btn {
     flex-grow: 1;
